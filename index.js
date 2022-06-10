@@ -16,10 +16,16 @@ The function should:
 */
 
 
-function createMenuItem(/*Your code here*/){
-  /*Your code here*/
+function createMenuItem(name, price, category){
+  const newItem ={
+  name: name,
+  price: price,
+  category: category
+  }
+  return newItem
 }
 
+console.log('task 1a', createMenuItem('tacos', 8, 'lunch'));
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b (not auto-tested): 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -50,11 +56,17 @@ Using the burger object below do the following:
 const burger = {
   name: "Burger", 
   price: 18, 
-  category: "Lunch", 
-  
+  category: "Lunch",
+  discount: function(string){
+    if(string === 'teacher' || string === 'student'){
+      return this.price - 4.5
+    }else if (string === 'public'){
+      return this.price  - 1.8
+    }
+  }
 }
 
-
+console.log('task 2', burger.discount('teacher'));
 
 ///////////////Reviews (MVP)///////////////////
 const reviews = [
@@ -82,7 +94,6 @@ Reyna's feedback is missing! Use what you know to do the following: (no function
 */
 
 
-
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Write a function that creates an object with name, rating, feedback, add the new review to the end of an array and returns the resulting array. 
 
@@ -95,9 +106,12 @@ Use the addReview function below to do the following:
 */
 
 
-function addReview(/*Your Code Here */){
-  /*Your Code Here */
+function addReview(array, name, rating, feedback){
+  array.push({name: name, rating: rating, feedback: feedback});
+  return array;
 }
+
+console.log('task 5', addReview(reviews, 'Daniela', 5, 'Beautiful atmosphere and wonderful vegan options!'));
 
 
 
@@ -112,11 +126,12 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
-  /*Your code here*/
+function getReviewByIndex(array, number){
+    return `${array[number].name} gave the restaurant a ${array[number].rating} star review, and their feedback was: ${array[number].feedback}`
 }
 
-  
+console.log('task 6', getReviewByIndex(reviews, 0));
+
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Write a function to get information about the most recent (last) review called `getLastReview`
@@ -131,9 +146,11 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
+function getLastReview(array){
+  return`${array[array.length-1].name} gave the restaurant a ${array[array.length-1].rating} star review, and their feedback was: ${array[array.length-1].feedback}`
 } 
+
+console.log('task 7', getLastReview(reviews));
 
 
 
